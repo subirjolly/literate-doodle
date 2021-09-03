@@ -1,9 +1,9 @@
-import TransactionsList from "../TransactionsList";
+import TransactionsList from '../TransactionsList';
 
-export default function TransactionHistory () {
-    return (
-        <div className="TransactionsDetails">
-            <TransactionsList />
-        </div>
-    )
+export default function TransactionHistory() {
+  return (
+    <div className='TransactionsDetails'>
+      <TransactionsList />
+    </div>
+  );
 }

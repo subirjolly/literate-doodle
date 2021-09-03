@@ -1,30 +1,26 @@
-import { createContext, FC, useState } from "react";
-import MOCKED_TRANSACTIONS from "../TransactionsData";
-import { Transaction, UUID } from "../Types";
-import IDGenerator from "../Utils/IDGenerator";
+import {createContext, FC, useState} from 'react';
+import MOCKED_TRANSACTIONS from '../TransactionsData';
+import {Transaction, UUID} from '../Types';
+import IDGenerator from '../Utils/IDGenerator';
 
 interface TransactionsContextType {
-  addTransaction: (transaction: Transaction) => UUID
+  addTransaction: (transaction: Transaction) => UUID;
   getTransactions: () => Array<Transaction>;
 }
 
 const DEFAULT_CONTEXT = {
   addTransaction: (_: Transaction) => '',
-  getTransactions: () => []
+  getTransactions: () => [],
 };
 
-export const TransactionsContext = createContext<TransactionsContextType>(
-  DEFAULT_CONTEXT
-);
+export const TransactionsContext = createContext<TransactionsContextType>(DEFAULT_CONTEXT);
 
-
-
-const TransactionsProvider: FC = ({ children }) => {
+const TransactionsProvider: FC = ({children}) => {
   const [transactions, setTransactions] = useState<Array<Transaction>>(MOCKED_TRANSACTIONS);
 
   const getTransactions = () => {
     return transactions;
-  }
+  };
 
   const addTransaction = (transaction: Transaction): UUID => {
     transaction.id = IDGenerator.generate();
@@ -39,7 +35,7 @@ const TransactionsProvider: FC = ({ children }) => {
     <TransactionsContext.Provider
       value={{
         getTransactions,
-        addTransaction
+        addTransaction,
       }}
     >
       {children}

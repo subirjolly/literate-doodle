@@ -1,6 +1,7 @@
 /node_modules
 /.pnp
 .pnp.js
+**/index.css
 
 /coverage
 
@@ -20,3 +21,7 @@ cypress/videos
 cypress/screenshots
 .nyc_output
 
+
+# For Now
+package-lock.json
+yarn.lock

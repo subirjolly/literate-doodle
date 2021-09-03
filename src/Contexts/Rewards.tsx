@@ -1,4 +1,4 @@
-import { createContext, FC, useState } from "react";
+import {createContext, FC, useState} from 'react';
 
 interface RewardsContextType {
   getPoints: () => number;
@@ -9,14 +9,12 @@ interface RewardsContextType {
 const DEFAULT_CONTEXT = {
   getPoints: () => 0,
   clearPoints: () => null,
-  addPoints: (_: number) => null
+  addPoints: (_: number) => null,
 };
 
-export const RewardsContext = createContext<RewardsContextType>(
-  DEFAULT_CONTEXT
-);
+export const RewardsContext = createContext<RewardsContextType>(DEFAULT_CONTEXT);
 
-const RewardsProvider: FC = ({ children }) => {
+const RewardsProvider: FC = ({children}) => {
   const [points, setPoints] = useState(0);
 
   const getPoints = () => {
@@ -36,7 +34,7 @@ const RewardsProvider: FC = ({ children }) => {
       value={{
         getPoints,
         addPoints,
-        clearPoints
+        clearPoints,
       }}
     >
       {children}
