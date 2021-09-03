@@ -8,3 +8,24 @@ export interface Transaction {
     id: UUID
     value: Price
 }
+
+export interface Column {
+    id: string
+    title: string
+}
+
+export interface CellValue {
+    column: string
+    value: string | number
+}
+
+
+export interface CustomerReward {
+    customer: Customer
+    transactions: number
+    rewards: number
+    expenditure: Price
+}
+export interface CustomerRewardsMap {
+    [key: string]: CustomerReward
+}

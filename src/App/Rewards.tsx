@@ -9,7 +9,9 @@ export default function RewardsApp() {
     <div className="RewardsApp">
       <div className="RewardPoints" data-testid="RewardPoints">Total Points: {getPoints()}</div>
       <Checkout />
-      <a href='/history'>View History</a>
+      <a href='/history' data-testid='ViewHistory'>View History</a>
+      <br />
+      <a href='/rewards' data-testid='ViewRewards'>View Rewards</a>
       <br />
       <br />
       <br />

@@ -9,7 +9,7 @@ const buildTransactions = (customers: number, days: number): Array<Transaction> 
             const transaction = {
                 customer: customerID,
                 id: IDGenerator.generate(),
-                value: j
+                value: j + 1
             } as Transaction;
 
             transactions.push(transaction);

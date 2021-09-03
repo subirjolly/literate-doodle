@@ -1,6 +1,6 @@
 import { createContext, FC, useState } from "react";
 import MOCKED_TRANSACTIONS from "../TransactionsData";
-import { Transaction, TransactionData, UUID } from "../Types";
+import { Transaction, UUID } from "../Types";
 import IDGenerator from "../Utils/IDGenerator";
 
 interface TransactionsContextType {

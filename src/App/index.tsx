@@ -5,25 +5,33 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import RewardsHistory from "../Components/History";
+import TransactionHistory from "../Components/TransactionHistory";
+import TransactionsProvider from "../Contexts/Transactions";
+import CustomerRewards from "../Components/CustomerRewards";
 
 export default function App() {
   return (
     <div className="App">
-      <RewardsProvider>
         <Router>
       <Switch>
           <Route path="/history">
-            <RewardsHistory />
+            <TransactionsProvider>
+              <TransactionHistory />
+            </TransactionsProvider>
+          </Route>
+          <Route path="/rewards">
+            <TransactionsProvider>
+              <CustomerRewards />
+            </TransactionsProvider>
           </Route>
           <Route path="/">
+      <RewardsProvider>
             <RewardsApp />
+      </RewardsProvider>
           </Route>
         </Switch>
         </Router>
-      </RewardsProvider>
     </div>
   );
 }
