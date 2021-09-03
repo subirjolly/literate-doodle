@@ -1,0 +1,36 @@
+.Table {
+    display: flex;
+    flex-direction: column;
+
+    > .Header {
+        font-weight: bold;
+        display: flex;
+        padding: 10px;
+        
+        > .Column {
+            padding: 10px;
+            flex: 1;
+        }
+    }
+    
+    > .Body {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        
+        > .Row {
+            flex: 1;
+            display: flex;
+            
+            > .Cell {
+                padding: 10px;
+                flex: 1;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: greenyellow;
+            }
+        }
+    }
+}
