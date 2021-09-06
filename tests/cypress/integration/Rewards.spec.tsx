@@ -1,5 +1,3 @@
-import {each} from 'cypress/types/jquery';
-
 export {};
 
 // We can extend cypress to have cy.getByTestID command
@@ -42,7 +40,7 @@ it('should run display rewards correctly', () => {
   ];
 
   // README(Justification): There are other ways to test it.
-  // 1. Jest: It would be pretty east to have jest tests but cypress is a budding technology and I have seen a lot of success with it.
+  // 1. Jest: It would be pretty easy to have jest tests but cypress is a budding technology and I have seen a lot of success with it and wanted to ShowCase it.
   // 2. Instead of matching the exact strings, I could either have test ids to the cells themselves which were uniquely created and identified and then use those for assertions.
   // 3. Or I could have just got the children of children and assert each.
   expected.forEach((exp, i) => {

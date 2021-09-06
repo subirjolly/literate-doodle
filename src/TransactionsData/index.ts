@@ -4,6 +4,7 @@ import IDGenerator from '../Utils/IDGenerator';
 const buildTransactions = (customers: number, days: number): Array<Transaction> => {
   const transactions = new Array<Transaction>();
   for (var i = 0; i < customers; i++) {
+    // Hard-coding Customer IDs for now.
     const customerID = IDGenerator.generate(`Customer ${i}`);
     for (var j = 0; j < days; j++) {
       const transaction = {

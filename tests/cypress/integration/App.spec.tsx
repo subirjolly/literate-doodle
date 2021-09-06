@@ -1,3 +1,5 @@
+import IDGenerator from "../../../src/Utils/IDGenerator";
+
 export {};
 
 // We can extend cypress to have cy.getByTestID command
@@ -7,44 +9,25 @@ const getByTestID = (testID: string | number) => {
 
 it('should run transactions manually', () => {
   cy.clearLocalStorage();
+  let basePoints = 2695;
+
   cy.visit('http://localhost:3000');
-  getByTestID('RewardPoints').should('contain', 'Total Points: 0');
+  getByTestID('RewardPoints').should('contain', `Total Points: ${basePoints}`);
+  getByTestID('InputFieldInput--CustomerID').should('have.value', IDGenerator.generate('Customer 0'));
 
   const cases = [
-    [120, 90],
-    [50, 0],
-    [51, 1],
-    ['invalid input', 0],
+    [120, basePoints + 90],
+    [50, basePoints],
+    [51, basePoints + 1],
+    ['invalid input', basePoints],
   ];
 
   cases.forEach(([price, points]) => {
-    getByTestID('RewardPoints').should('contain', 'Total Points: 0');
-    getByTestID('TransactionAmount').focus().clear();
-    getByTestID('TransactionAmount').type(`${price}`);
+    cy.visit('http://localhost:3000');
+    getByTestID('RewardPoints').should('contain', `Total Points: ${basePoints}`);
+    getByTestID('InputFieldInput--TransactionAmount').focus().clear();
+    getByTestID('InputFieldInput--TransactionAmount').type(`${price}`);
     getByTestID('SubmitTransaction').click();
     getByTestID('RewardPoints').should('contain', `Total Points: ${points}`);
-    getByTestID('ClearStorage').click();
-  });
-});
-
-it('should run display history correctly', () => {
-  cy.clearLocalStorage();
-  cy.visit('http://localhost:3000');
-  getByTestID('RewardPoints').should('contain', 'Total Points: 0');
-
-  const cases = [
-    [120, 90],
-    [50, 0],
-    [51, 1],
-    ['invalid input', 0],
-  ];
-
-  cases.forEach(([price, points]) => {
-    getByTestID('RewardPoints').should('contain', 'Total Points: 0');
-    getByTestID('TransactionAmount').focus().clear();
-    getByTestID('TransactionAmount').type(`${price}`);
-    getByTestID('SubmitTransaction').click();
-    getByTestID('RewardPoints').should('contain', `Total Points: ${points}`);
-    getByTestID('ClearStorage').click();
   });
 });
