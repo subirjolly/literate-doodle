@@ -26,7 +26,7 @@ const TransactionsProvider: FC = ({children}) => {
     transaction.id = IDGenerator.generate();
 
     transactions.push(transaction);
-    setTransactions(transactions);
+    setTransactions([...transactions]);
 
     return transaction.id;
   };

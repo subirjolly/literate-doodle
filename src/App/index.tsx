@@ -1,4 +1,3 @@
-import RewardsProvider from '../Contexts/Rewards';
 import '../styles.css';
 import RewardsApp from './Rewards';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -22,9 +21,9 @@ export default function App() {
       </TransactionsProvider>
       </Route>
       <Route path='/'>
-      <RewardsProvider>
-        <RewardsApp />
-      </RewardsProvider>
+        <TransactionsProvider>
+          <RewardsApp />
+        </TransactionsProvider>
       </Route>
     </Switch>
     </Router>
