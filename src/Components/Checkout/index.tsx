@@ -1,4 +1,5 @@
 import {useContext, useEffect, useState} from 'react';
+import './index.css';
 import { TransactionsContext } from '../../Contexts/Transactions';
 import IDGenerator from '../../Utils/IDGenerator';
 import PointsCalculator from '../../Utils/PointsCalculator';
@@ -41,6 +42,7 @@ export default function Checkout() {
         Total Points: {rewards}
       </div>
       <InputField
+        hasFocus={true}
         label='Transaction Price'
         pattern='[0-9]*'
         value={price}
