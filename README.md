@@ -8,6 +8,8 @@ OLD NOTES: Right now I have added some mock data which has 4 customers and 120 t
 Once you are ready, go ahead and start playing with the Transaction Price and the `Order Now` button. You total points for the currently selected customer should be visible on top.
 
 ## Testing
+NOTE: Just in case you aren't able to run the tests, I also have added the videos of the test runs to `test-videos` folder.
+
 To Run all Cypress tests without seeing in Browser
 `yarn e2e:all`
 
