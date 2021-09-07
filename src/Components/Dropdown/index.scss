@@ -1,0 +1,64 @@
+$LabelHeight: 80px;
+$ItemHeight: 60px;
+$BorderRadius: 4px;
+
+.DropdownContainer {
+    width: 100%;
+    min-width: 300px;
+    padding: 10px;
+
+    > .Title {
+        margin: 10px;
+    }
+
+    > .Dropdown {
+        border: 1px solid #CCC;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+        border-radius: $BorderRadius;
+        box-shadow: 0 0 15px #DDD;
+    
+        > .Label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: $LabelHeight;
+            border-radius: $BorderRadius;
+            
+            &:hover {
+                cursor: pointer;
+                background-color: #DDD;
+                border-radius: $BorderRadius;
+            }
+        }
+    
+        > .Items {
+            border-radius: $BorderRadius;
+            position: absolute;
+            width: 100%;
+            top: $LabelHeight;
+            min-height: $ItemHeight;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFF;
+            box-shadow: 0 0 50px #AAA;
+    
+            > .DropdownItem {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                height: $ItemHeight;
+    
+                &:hover {
+                    cursor: pointer;
+                    background-color: #EEE;
+                }
+            }
+        }
+    }
+}

@@ -1,12 +1,29 @@
 .Checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    > .CustomersDropdown {
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
     > .RewardPoints {
+        width: 600px;
+        display: flex;
         margin: 20px;
         font-size: 40px;
         font-weight: bold;
         color: darkgreen;
     }
-
+    
     > input[type=button] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin: 50px;
         height: 50px;
         width: 200px;

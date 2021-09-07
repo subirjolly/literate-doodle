@@ -12,7 +12,7 @@ it('should run transactions manually', () => {
   let basePoints = 2695;
   cy.visit('http://localhost:3000');
   getByTestID('RewardPoints').should('contain', `Total Points: ${basePoints}`);
-  getByTestID('InputFieldInput--CustomerID').should('have.value', IDGenerator.generate('Customer 0'));
+  getByTestID('DropdownLabel--CustomerDropdown').contains(IDGenerator.generate('Customer 0'));
 
   const cases = [
     [200, 250],
