@@ -1,5 +1,5 @@
-import {useCallback, useContext, useEffect, useState} from 'react';
-import './index.css';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import './index.scss';
 import { TransactionsContext } from '../../Contexts/Transactions';
 import IDGenerator from '../../Utils/IDGenerator';
 import PointsCalculator from '../../Utils/PointsCalculator';
@@ -10,49 +10,60 @@ import { Customer } from '../../Types';
 
 export default function Checkout() {
   const [price, setPrice] = useState('');
-  const {getCustomers, getCurrentCustomer, setCurrentCustomer, addCustomer} = useContext(CustomersContext);
-  const {addTransaction, getTransactions} = useContext(TransactionsContext);
+  const { getCustomers, getCurrentCustomer, setCurrentCustomer, addCustomer } =
+    useContext(CustomersContext);
+  const { addTransaction, getTransactions } = useContext(TransactionsContext);
   const [rewards, setRewards] = useState(0);
   const customer = getCurrentCustomer();
 
-  console.log('reloading')
   useEffect(() => {
     let updatedRewards = 0;
 
-    getTransactions().filter(t => t.customer === customer).forEach((t) => {
-      updatedRewards += PointsCalculator.calculate(t.value);
-    });
+    getTransactions()
+      .filter((t) => t.customer === customer)
+      .forEach((t) => {
+        updatedRewards += PointsCalculator.calculate(t.value);
+      });
 
     setRewards(updatedRewards);
   }, [rewards, customer, getTransactions]);
 
-
   const handleSubmit = () => {
     const value = parseInt(price, 10);
     if (!isNaN(value)) {
-      addTransaction({customer, id: IDGenerator.generate(), value})
+      addTransaction({ customer, id: IDGenerator.generate(), value });
     }
   };
 
   const handleChange = (text: string) => {
-      setPrice(text);
+    setPrice(text);
   };
 
-  const handleDropdownChange = useCallback((item: DropdownItem) => {
-    setCurrentCustomer(item.id as Customer);
-  }, [setCurrentCustomer]);
+  const handleDropdownChange = useCallback(
+    (item: DropdownItem) => {
+      setCurrentCustomer(item.id as Customer);
+    },
+    [setCurrentCustomer]
+  );
 
   const getCustomersDropdown = useCallback(() => {
     const currentCustomer = getCurrentCustomer();
-    const items: DropdownItem[] = getCustomers().map(customer  => {
+    const items: DropdownItem[] = getCustomers().map((customer) => {
       return {
         id: customer,
         title: customer,
-        selected: customer === currentCustomer
+        selected: customer === currentCustomer,
       } as DropdownItem;
     });
 
-    return <Dropdown testID={'CustomerDropdown'} title={'Change Customer'} items={items} onChange={handleDropdownChange} />
+    return (
+      <Dropdown
+        testID={'CustomerDropdown'}
+        title={'Change Customer'}
+        items={items}
+        onChange={handleDropdownChange}
+      />
+    );
   }, [getCurrentCustomer, getCustomers, handleDropdownChange]);
 
   const handleAddCustomer = () => {
@@ -64,9 +75,7 @@ export default function Checkout() {
       <div className='RewardPoints' data-testid='RewardPoints'>
         Total Points: {rewards}
       </div>
-      <div className='CustomersDropdown'>
-        {getCustomersDropdown()}
-      </div>
+      <div className='CustomersDropdown'>{getCustomersDropdown()}</div>
       <InputField
         hasFocus={true}
         label='Transaction Price'
@@ -76,8 +85,18 @@ export default function Checkout() {
         onChange={handleChange}
         testID='TransactionAmount'
       />
-      <input type='button' value='Order Now' onClick={handleSubmit} data-testid='SubmitTransaction' />
-      <input type='button' value='Add New Customer' onClick={handleAddCustomer} data-testid='AddCustomer' />
+      <input
+        type='button'
+        value='Order Now'
+        onClick={handleSubmit}
+        data-testid='SubmitTransaction'
+      />
+      <input
+        type='button'
+        value='Add New Customer'
+        onClick={handleAddCustomer}
+        data-testid='AddCustomer'
+      />
     </div>
   );
 }

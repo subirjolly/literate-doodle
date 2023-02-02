@@ -1,6 +1,6 @@
-import {FC} from 'react';
-import './index.css';
-import {CellValue, Column} from '../../Types';
+import { FC } from 'react';
+import './index.scss';
+import { CellValue, Column } from '../../Types';
 import Row from './Row';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   rows: Array<Array<CellValue>>;
 }
 
-const Table: FC<Props> = ({columns, rows}) => {
+const Table: FC<Props> = ({ columns, rows }) => {
   const getHeader = () => {
     return columns.map((c) => (
       <div className='Column' key={c.id}>
